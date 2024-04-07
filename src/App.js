@@ -9,6 +9,7 @@ import BlogEntry from './components/BlogEntry';
 import Auth from './components/Auth';
 import './App.css';
 import Repository from './components/Repository';
+
 /**
  * The App component serves as the root component of the application.
  * It sets up the router and defines the routes for the application.
@@ -16,32 +17,33 @@ import Repository from './components/Repository';
  *
  * @returns {JSX.Element} The main application component.
  */
-function App()  {
-    return (
-        <>
-            <Router>
-                <NavBar/>
-                <div id='hero-init'>
-                    <h1>Armando Di Filippo</h1>
-                    <div id='h5-title'>
-                        <h5>Mirando desde una perspectiva histórico-estructural la economía</h5>
-                    </div>
-                    <img src='' alt=''/>
-                </div>
-                <Routes>
-                    <Route index path="/" element={<Home/>}/>
-                    <Route path="/books/" element={<Books/>}/>
-                    <Route path="/books/:id" element={<BooksId/>}/>
-                    <Route path="/contact" element={<Contact/>}/>
-                    <Route path="/auth" element={<Auth/>}/>
-                    <Route path="/repository" element={<Repository/>}/>
-                    <Route path="/blog" element={<BlogEntry/>}/>
-                    <Route path="/blog/:id" element={<BlogEntry/>}/>
-                </Routes>
-                <GeneralFooter/>
-            </Router>
-        </>
-    );
+function App() {
+	return (
+		<>
+			<Router>
+				<NavBar/>
+				<div id='hero-init'>
+					<h1>Armando Di Filippo</h1>
+					<div id='h5-title'>
+						<h5>Mirando desde una perspectiva histórico-estructural la economía</h5>
+					</div>
+					<img src='' alt='Imagen de portada de Armando'/>
+				</div>
+				<Routes>
+					<Route index path="/" element={<Home/>}/>
+					<Route path="/books/" element={<Books/>}/>
+					<Route path="/books/:id" element={<BooksId/>}/>
+					<Route path="/contact" element={<Contact/>}/>
+					<Route path="/auth" element={<Auth/>}/>
+					<Route path="/repository" element={<Repository/>}/>
+					<Route path="/blog" element={<BlogEntry/>}/>
+					<Route path="/blog/:id" element={<BlogEntry/>}/>
+				</Routes>
+				<GeneralFooter/>
+			</Router>
+		</>
+	);
 }
+
 // Export the App component as the default export.
 export default App;

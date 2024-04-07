@@ -1,83 +1,57 @@
-import React, {useState} from 'react';
-import console from "node:console";
-import nodemailer from "nodemailer";
+import React, {useEffect, useState} from 'react';
+import {init, send, sendForm} from "@emailjs/browser";
+
 
 export const Contact = () => {
-    const [contactForm, setContactForm] = useState({
-        name: "",
-        email: "",
-        topic: "",
-        message: "",
-    });
+	const [contactForm, setContactForm] = useState({
+		name: '',
+		email: '',
+		topic: '',
+		message: '',
+	});
+	let templateParams = {
+		name: contactForm.name,
+		email: contactForm.email,
+		topic: contactForm.topic,
+		message: contactForm.message,
+	}
+	useEffect(() => {
+		init(
+			{
+				serviceId: process.env.REACT_APP_API_EMAILJS_SERVICE_ID,
+				templateId: 'template_b54056f',
+				userId: process.env.REACT_APP_API_EMAILJS_KEY_PUBLIC,
+			});
+	}, []);
 
-    const [error, setError] = useState(null);
+	function handleSubmit(event) {
+		event.preventDefault();
+		send(process.env.REACT_APP_API_EMAILJS_SERVICE_ID, 'template_b5405', templateParams)
+			.then(response => {
+				console.log('Envío exitoso', response.status, response.text)
+			})
+			.catch((error) => {
+				console.error('ERROR', error);
+			});
+		document.getElementById('infoSubmitted').reset();
+	}
 
-    const handleContact = async (e) => {
-        e.preventDefault();
-
-        if (Object.values(contactForm).some(field => field === "")) {
-            setError('All fields are required');
-            return;
-        }
-
-        try {
-            await fetch('/submit', {
-                method: 'POST',
-                body: JSON.stringify(contactForm),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            await sendContactInfoToMail();
-            console.log('Form Submitted');
-            setContactForm({
-                name: "",
-                email: "",
-                topic: "",
-                message: "",
-            });
-
-        } catch(e) {
-            setError('There was an error submitting the form.');
-            console.error(e);
-        }
-    };
-
-    const sendContactInfoToMail = async () => {
-        try {
-            const transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: process.env.REACT_APP_GMAIL_ARMANDO,
-                    pass: process.env.REACT_APP_PASSWORD_GMAIL_ARMANDO
-                }
-            });
-
-            await transporter.sendMail({
-                from: contactForm.email,
-                to: process.env.REACT_APP_GMAIL_ARMANDO,
-                subject: "Contact Info",
-                text: Object.values(contactForm).join(", ")
-            });
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    return (
-        <section>
-            <form id='infoSubmitted' onSubmit={handleContact}>
-                <div id="form-h2">
-                    <h2>Contacto</h2>
-                </div>
-                <div className={error ? 'showError' : 'hideError'}>{error}</div>
-                <input type="text" placeholder="Nombre completo" value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})}/>
-                <input type="email" placeholder="Email" value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})}/>
-                <input type="text" placeholder="Tema" value={contactForm.topic} onChange={e => setContactForm({...contactForm, topic: e.target.value})}/>
-                <textarea placeholder="Mensaje" value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})}/>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    );
+	return (
+		<section>
+			<form id='infoSubmitted' onSubmit={handleSubmit}>
+				<div>
+					<h2>Contacto</h2>
+				</div>
+				<input type="text" placeholder="Nombre completo"
+					   onChange={e => setContactForm({...contactForm, name: e.target.value})}/>
+				<input type="email" placeholder="Email"
+					   onChange={e => setContactForm({...contactForm, email: e.target.value})}/>
+				<input type="text" placeholder="Tema"
+					   onChange={e => setContactForm({...contactForm, topic: e.target.value})}/>
+				<textarea placeholder="Mensaje"
+						  onChange={e => setContactForm({...contactForm, message: e.target.value})}/>
+				<button type="submit">Enviar</button>
+			</form>
+		</section>
+	);
 };

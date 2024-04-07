@@ -18,12 +18,6 @@ function NavBar() {
         setWordOnNavBar(false);
         setClick(false);
     };
-    async function MenuDropdown() {
-        const [menuDropdown, setMenuDropdown] = useState(false);
-        await handleClick();
-        const closeMobileMenu = () => setMenuDropdown(false);
-    }
-
     return (
         <nav>
             <section className="navbar-container-principal">
