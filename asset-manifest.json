@@ -1,18 +1,22 @@
 {
   "files": {
-    "main.css": "/armando-di-filippo-webpage-2024-final/static/css/main.2d09e8d9.css",
-    "main.js": "/armando-di-filippo-webpage-2024-final/static/js/main.616bd92c.js",
+    "main.css": "/armando-di-filippo-webpage-2024-final/static/css/main.c1ca4da1.css",
+    "main.js": "/armando-di-filippo-webpage-2024-final/static/js/main.fc38f289.js",
     "static/js/453.e1c83aab.chunk.js": "/armando-di-filippo-webpage-2024-final/static/js/453.e1c83aab.chunk.js",
+    "static/js/312.fa2e92ff.chunk.js": "/armando-di-filippo-webpage-2024-final/static/js/312.fa2e92ff.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/armando-di-filippo-webpage-2024-final/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
     "static/media/img1.jpg": "/armando-di-filippo-webpage-2024-final/static/media/img1.3df63ad93e0ff4a108de.jpg",
     "static/media/img2.jpg": "/armando-di-filippo-webpage-2024-final/static/media/img2.8e72b5ce49fd0bb0cb22.jpg",
+    "static/media/bootstrap-icons.woff2?": "/armando-di-filippo-webpage-2024-final/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
     "static/media/img3.jpg": "/armando-di-filippo-webpage-2024-final/static/media/img3.20ed6e46b39021b1c6e3.jpg",
     "index.html": "/armando-di-filippo-webpage-2024-final/index.html",
-    "main.2d09e8d9.css.map": "/armando-di-filippo-webpage-2024-final/static/css/main.2d09e8d9.css.map",
-    "main.616bd92c.js.map": "/armando-di-filippo-webpage-2024-final/static/js/main.616bd92c.js.map",
-    "453.e1c83aab.chunk.js.map": "/armando-di-filippo-webpage-2024-final/static/js/453.e1c83aab.chunk.js.map"
+    "main.c1ca4da1.css.map": "/armando-di-filippo-webpage-2024-final/static/css/main.c1ca4da1.css.map",
+    "main.fc38f289.js.map": "/armando-di-filippo-webpage-2024-final/static/js/main.fc38f289.js.map",
+    "453.e1c83aab.chunk.js.map": "/armando-di-filippo-webpage-2024-final/static/js/453.e1c83aab.chunk.js.map",
+    "312.fa2e92ff.chunk.js.map": "/armando-di-filippo-webpage-2024-final/static/js/312.fa2e92ff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d09e8d9.css",
-    "static/js/main.616bd92c.js"
+    "static/css/main.c1ca4da1.css",
+    "static/js/main.fc38f289.js"
   ]
 }
